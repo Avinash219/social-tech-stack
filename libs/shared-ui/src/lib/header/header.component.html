@@ -1,0 +1,26 @@
+<p-toolbar>
+  <div class="p-toolbar-group-start">
+    @if (user$ | async; as data) {
+    <!-- <ng-template pTemplate="start">
+      <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" />
+    </ng-template>
+    <ng-template pTemplate="end"> -->
+    <p-button icon="pi pi-home" [rounded]="true" [text]="true" [raised]="true" severity="info" />
+
+    <p-button icon="pi pi-user" [rounded]="true" [text]="true" [raised]="true" severity="info" />
+    <!--  <p-button
+      class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
+      <i class="pi pi-search text-2xl"></i>
+    </p-button> -->
+    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+    <span class="font-bold text-bluegray-50">
+      {{data?.email}}
+    </span>
+    <!--  </ng-template> -->
+
+    }
+    @else {
+    <p-button icon="pi pi-sign-in" class="mr-2" label="Login" (click)="login()" />
+    }
+  </div>
+</p-toolbar>
