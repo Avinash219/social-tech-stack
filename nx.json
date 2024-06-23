@@ -18,7 +18,7 @@
     ],
     "sharedGlobals": []
   },
-  "nxCloudAccessToken": "MzBiMjAxZGEtNzIwYS00MDM2LWFlOGItMTRlMzY1Zjk0ZGEzfHJlYWQtd3JpdGU=",
+  "neverConnectToCloud": true,
   "targetDefaults": {
     "@angular-devkit/build-angular:browser": {
       "cache": true,
