@@ -12,4 +12,5 @@ import { HeaderComponent } from '@client/shared-ui';
 })
 export class AppComponent {
   title = 'shell';
+  name = 'Avinash';
 }
