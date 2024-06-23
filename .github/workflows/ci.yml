@@ -28,11 +28,11 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Lint code
-        # run: npm run lint
+      # - name: Lint code
+      # run: npm run lint
 
-      - name: Run tests
-        #run: npm run test -- --no-watch --code-coverage
+      # - name: Run tests
+      #run: npm run test -- --no-watch --code-coverage
 
       - name: Build project
         run: npm run build
