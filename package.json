@@ -2,7 +2,9 @@
   "name": "@client/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+  "deploy": "ng deploy --base-href=/social-tech-stack/"
+},
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~18.0.0",
