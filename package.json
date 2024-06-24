@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-  "deploy": "ng deploy --no-silent --base-href=/social-tech-stack/",
+  "deploy": "ng deploy --base-href=/social-tech-stack/ --no-silent",
   "build": "nx build shell"
 },
   "private": true,
