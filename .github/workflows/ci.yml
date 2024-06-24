@@ -53,12 +53,6 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main'
-        run: |
-          npm run build
-          npx angular-cli-ghpages --dir=dist/apps/shell --no-silent
-
       - name: Show Git configuration before setting
         run: git config --list
         shell: bash
@@ -75,7 +69,7 @@ jobs:
         shell: bash
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/apps/shell
+        if: github.ref == 'refs/heads/main'
+        run: |
+          npm run build
+          npx angular-cli-ghpages --dir=dist/apps/shell --no-silent
