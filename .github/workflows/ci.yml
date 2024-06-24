@@ -73,3 +73,5 @@ jobs:
         run: |
           npm run build
           npx angular-cli-ghpages --dir=dist/apps/shell --no-silent
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
