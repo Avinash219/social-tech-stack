@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-  "deploy": "ng deploy --base-href=/social-tech-stack/ --no-silent",
-  "build": "nx build shell"
-},
+    "deploy": "ng deploy --base-href=/social-tech-stack/ --no-silent",
+    "build": "nx build shell"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~18.0.0",
@@ -34,6 +34,7 @@
     "@types/node": "18.16.9",
     "@typescript-eslint/eslint-plugin": "^7.3.0",
     "@typescript-eslint/parser": "^7.3.0",
+    "angular-cli-ghpages": "^2.0.1",
     "cypress": "^13.8.0",
     "eslint": "~8.57.0",
     "eslint-config-prettier": "^9.0.0",
@@ -67,4 +68,3 @@
     "zone.js": "~0.14.3"
   }
 }
-
