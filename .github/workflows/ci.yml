@@ -57,6 +57,6 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
           npm run build
-          npx angular-cli-ghpages --dir=dist/apps/social-tech-stack --base-href=/social-tech-stack/ --no-silent
+          npx angular-cli-ghpages --dir=dist/apps/social-tech-stack --no-silent
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
