@@ -58,5 +58,14 @@ jobs:
         run: |
           npm run build
           npx angular-cli-ghpages --dir=dist/apps/shell --no-silent
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "Avinash219"
+          git config user.email "avinash.dev21987@gmail.com"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/apps/shell
