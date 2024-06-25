@@ -65,7 +65,7 @@ jobs:
         run: |
           git fetch origin
           git checkout -b gh-pages
-          cp -r ./dist/* .
+          cp -r /dist/apps/* .
           git add .
           git commit -m "Deploy to GitHub Pages"
           git push origin gh-pages --force
