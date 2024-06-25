@@ -59,6 +59,9 @@ jobs:
           git config --global user.email "avinash.dev21987@gmail.com"
         shell: bash
 
+      - name: List build outputs
+        run: ls -R dist/apps/
+
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
