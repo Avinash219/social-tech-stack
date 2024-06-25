@@ -69,15 +69,14 @@ jobs:
         shell: bash
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-        run: |
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+      run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git fetch origin
         git checkout -b gh-pages
-        cp -r ./dist/* .
+        cp -r ./build/* .
         git add .
         git commit -m "Deploy to GitHub Pages"
         git push origin gh-pages --force
