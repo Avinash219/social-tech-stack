@@ -72,4 +72,12 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/apps/shell
+        run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git fetch origin
+        git checkout -b gh-pages
+        cp -r ./dist/* .  # Adjust the path if your build directory is different
+        git add .
+        git commit -m "Deploy to GitHub Pages"
+        git push origin gh-pages --force
