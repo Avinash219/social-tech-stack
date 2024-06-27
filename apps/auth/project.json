@@ -62,7 +62,7 @@
       "executor": "@nx/angular:dev-server",
       "options": {
         "port": 4201,
-        "publicHost": "http://localhost:4201"
+        "publicHost": "https://avinash219.github.io/social-tech-stack/auth"
       },
       "configurations": {
         "production": {
