@@ -21,8 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build the project
-        run: npx nx build shell --prod
+      - name: Build the projects
+        run: |
+          npx nx build shell --prod
           npx nx build auth --prod
           npx nx build profile --prod
           npx nx build feed --prod
@@ -33,4 +34,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist/apps/* # Adjust if your output directory is different
+          publish_dir: dist/apps # Adjust if your output directory is different
