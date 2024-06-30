@@ -1,26 +1,32 @@
+import { loadRemoteModule } from '@nx/angular/mf';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
     path: 'projects',
-    loadChildren: () => import('projects/Routes').then((m) => m.remoteRoutes),
+    loadChildren: () =>
+      loadRemoteModule('projects', './Routes').then((m) => m.remoteRoutes),
   },
   {
     path: 'messaging',
-    loadChildren: () => import('messaging/Routes').then((m) => m.remoteRoutes),
+    loadChildren: () =>
+      loadRemoteModule('messaging', './Routes').then((m) => m.remoteRoutes),
   },
   {
     path: 'feed',
-    loadChildren: () => import('feed/Routes').then((m) => m.remoteRoutes),
+    loadChildren: () =>
+      loadRemoteModule('feed', './Routes').then((m) => m.remoteRoutes),
   },
   {
     path: 'profile',
-    loadChildren: () => import('profile/Routes').then((m) => m.remoteRoutes),
+    loadChildren: () =>
+      loadRemoteModule('profile', './Routes').then((m) => m.remoteRoutes),
   },
   {
     path: 'auth',
-    loadChildren: () => import('auth/Routes').then((m) => m.remoteRoutes),
+    loadChildren: () =>
+      loadRemoteModule('auth', './Routes').then((m) => m.remoteRoutes),
   },
   {
     path: '',
