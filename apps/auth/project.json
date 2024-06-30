@@ -10,7 +10,7 @@
       "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/auth",
+        "outputPath": "dist/apps/shell//auth",
         "index": "apps/auth/src/index.html",
         "main": "apps/auth/src/main.ts",
         "polyfills": ["zone.js"],
