@@ -1,6 +1,6 @@
 {
   "remotes": {
-    "auth": "auth@/apps/auth/remoteEntry.js",
+    "auth": "auth@/apps/shell/auth/remoteEntry.js",
     "profile": "profile@/apps/profile/remoteEntry.js",
     "feed": "feed@/apps/feed/remoteEntry.js",
     "messaging": "messaging@/apps/messaging/remoteEntry.js",
