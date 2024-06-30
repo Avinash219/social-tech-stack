@@ -1,0 +1,1 @@
+(self.webpackChunkauth=self.webpackChunkauth||[]).push([[554],{554:(d,h,t)=>{t.r(h),t.d(h,{remoteRoutes:()=>u});const u=[{path:"",loadChildren:()=>t.e(637).then(t.t.bind(t,1637,23)).then(n=>n.AuthFeatureModule)}]}}]);

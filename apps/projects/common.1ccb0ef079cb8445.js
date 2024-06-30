@@ -1,0 +1,1 @@
+(self.webpackChunkprojects=self.webpackChunkprojects||[]).push([[76],{5894:(s,e,o)=>{o.r(e),o.d(e,{remoteRoutes:()=>n});const n=[{path:"",component:o(8217).a}]}}]);

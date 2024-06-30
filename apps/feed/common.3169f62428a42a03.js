@@ -1,0 +1,1 @@
+(self.webpackChunkfeed=self.webpackChunkfeed||[]).push([[76],{6880:(s,n,e)=>{e.r(n),e.d(n,{remoteRoutes:()=>t});const t=[{path:"",component:e(6995).a}]}}]);
