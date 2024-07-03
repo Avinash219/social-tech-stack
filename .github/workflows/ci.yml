@@ -26,6 +26,15 @@ jobs:
       - name: List build output
         run: ls -R dist
 
+      - name: Verify shell output
+        run: |
+          if [ -d "dist/shell" ]; then
+            echo "Shell build output exists."
+          else
+            echo "Shell build output does NOT exist."
+            exit 1
+          fi
+
       - name: Deploy shell to GitHub Pages root
         run: |
           git config --global user.name 'github-actions[bot]'
