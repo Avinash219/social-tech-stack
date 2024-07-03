@@ -56,7 +56,7 @@ jobs:
           cd gh-pages-branch
           git add .
           git commit -m "Update Shell"
-          git push origin gh-pages
+          git push origin gh-pages || (git pull origin gh-pages --rebase && git push origin gh-pages)
           cd ..
 
       - name: Deploy other apps to their respective directories
@@ -73,7 +73,7 @@ jobs:
             cd gh-pages-branch
             git add .
             git commit -m "Update $app"
-            git push origin gh-pages
+            git push origin gh-pages || (git pull origin gh-pages --rebase && git push origin gh-pages)
             cd ..
             rm -rf gh-pages-branch
           done
