@@ -28,7 +28,7 @@ jobs:
 
       - name: Verify shell output
         run: |
-          if [ -d "dist/shell" ]; then
+          if [ -d "dist/apps/shell" ]; then
             echo "Shell build output exists."
           else
             echo "Shell build output does NOT exist."
@@ -40,7 +40,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch
-          rsync -av --delete dist/shell/ gh-pages-branch/
+          rsync -av --delete dist/apps/shell/ gh-pages-branch/
           cd gh-pages-branch
           git add .
           git commit -m "Update Shell"
@@ -53,7 +53,7 @@ jobs:
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
             git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch
             mkdir -p gh-pages-branch/$app
-            rsync -av --delete dist/$app/ gh-pages-branch/$app/
+            rsync -av --delete dist/apps/$app/ gh-pages-branch/$app/
             cd gh-pages-branch
             git add .
             git commit -m "Update $app"
