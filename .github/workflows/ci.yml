@@ -9,6 +9,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        app: [shell, auth, feed, messaging, profile, projects]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -27,8 +31,19 @@ jobs:
       - name: Debug build output
         run: ls -la ./dist
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy ${{ matrix.app }} to GitHub Pages
+        if: matrix.app == 'shell'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/apps/shell
+          publish_dir: ./dist/shell
+          publish_branch: gh-pages
+
+      - name: Deploy ${{ matrix.app }} to GitHub Pages
+        if: matrix.app != 'shell'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/${{ matrix.app }}
+          publish_branch: gh-pages
+          destination_dir: ${{ matrix.app }}
