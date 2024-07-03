@@ -39,9 +39,9 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch
-          rsync -av --delete dist/apps/shell/ gh-pages-branch/
-          cd gh-pages-branch
+          git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages
+          rsync -av --delete dist/apps/shell/ gh-pages/
+          cd gh-pages
           git add .
           git commit -m "Update Shell"
           git push origin gh-pages
@@ -51,13 +51,13 @@ jobs:
           for app in shell, auth, feed, messaging, profile, projects; do
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-            git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch
-            mkdir -p gh-pages-branch/$app
-            rsync -av --delete dist/apps/$app/ gh-pages-branch/$app/
-            cd gh-pages-branch
+            git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages
+            mkdir -p gh-pages/$app
+            rsync -av --delete dist/apps/$app/ gh-pages/$app/
+            cd gh-pages
             git add .
             git commit -m "Update $app"
             git push origin gh-pages
             cd ..
-            rm -rf gh-pages-branch
+            rm -rf gh-pages
           done
