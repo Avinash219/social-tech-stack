@@ -6,44 +6,48 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        app: [shell, auth, feed, messaging, profile, projects]
+        app: [shell, auth, feed, messaging, profile, projects] # List all your apps here
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v1
         with:
-          node-version: '20'
+          node-version: '14'
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install
 
-      - name: Build project
-        run: npx nx run-many --target=build --all
+      - name: Build all apps
+        run: npx nx run-many --target=build --all --prod
 
-      - name: Debug build output
-        run: ls -la ./dist
-
-      - name: Deploy ${{ matrix.app }} to GitHub Pages
+      - name: Deploy shell to GitHub Pages root
         if: matrix.app == 'shell'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/shell
-          publish_branch: gh-pages
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch
+          rsync -av --delete dist/shell/ gh-pages-branch/
+          cd gh-pages-branch
+          git add .
+          git commit -m "Update Shell"
+          git push origin gh-pages
 
-      - name: Deploy ${{ matrix.app }} to GitHub Pages
+      - name: Deploy other apps to their respective directories
         if: matrix.app != 'shell'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/${{ matrix.app }}
-          publish_branch: gh-pages
-          destination_dir: ${{ matrix.app }}
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch
+          mkdir -p gh-pages-branch/${{ matrix.app }}
+          rsync -av --delete dist/${{ matrix.app }}/ gh-pages-branch/${{ matrix.app }}/
+          cd gh-pages-branch
+          git add .
+          git commit -m "Update ${{ matrix.app }}"
+          git push origin gh-pages
