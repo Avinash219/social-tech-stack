@@ -9,10 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        app: [shell, auth, feed, messaging, profile, projects] # List all your apps here
-
     steps:
       - uses: actions/checkout@v2
 
@@ -28,7 +24,6 @@ jobs:
         run: npx nx run-many --target=build --all --prod
 
       - name: Deploy shell to GitHub Pages root
-        if: matrix.app == 'shell'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -40,14 +35,17 @@ jobs:
           git push origin gh-pages
 
       - name: Deploy other apps to their respective directories
-        if: matrix.app != 'shell'
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch
-          mkdir -p gh-pages-branch/${{ matrix.app }}
-          rsync -av --delete dist/${{ matrix.app }}/ gh-pages-branch/${{ matrix.app }}/
-          cd gh-pages-branch
-          git add .
-          git commit -m "Update ${{ matrix.app }}"
-          git push origin gh-pages
+          for app in shell, auth, feed, messaging, profile, projects; do
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch
+            mkdir -p gh-pages-branch/$app
+            rsync -av --delete dist/$app/ gh-pages-branch/$app/
+            cd gh-pages-branch
+            git add .
+            git commit -m "Update $app"
+            git push origin gh-pages
+            cd ..
+            rm -rf gh-pages-branch
+          done
