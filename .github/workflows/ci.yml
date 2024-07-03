@@ -55,6 +55,12 @@ jobs:
           rsync -av --delete dist/apps/shell/ gh-pages-branch/
           cd gh-pages-branch
           git add .
+
+      - name: List build output
+        run: git status
+
+      - name: Verify shell output
+        run: |
           git commit -m "Update Shell"
           git push -u origin gh-pages || true
           cd ..
