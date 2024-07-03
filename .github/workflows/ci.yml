@@ -56,7 +56,13 @@ jobs:
           cd gh-pages-branch
           git add .
           git commit -m "Update Shell"
-          git push origin gh-pages || (git pull origin gh-pages --rebase && git push origin gh-pages)
+          git push origin gh-pages || true
+          cd ..
+
+      - name: Push shell to GitHub Pages root
+        run: |
+          cd gh-pages-branch
+          git push origin gh-pages
           cd ..
 
       - name: Deploy other apps to their respective directories
