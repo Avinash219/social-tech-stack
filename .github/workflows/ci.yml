@@ -39,21 +39,27 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch
+          git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch || git init gh-pages-branch
+          cd gh-pages-branch
+          git checkout gh-pages || git checkout -b gh-pages
+          cd ..
           rsync -av --delete dist/apps/shell/ gh-pages-branch/
           cd gh-pages-branch
           git add .
           git commit -m "Update Shell"
-          git push origin gh-pages
+          git push origin gh-page
 
       - name: Deploy other apps to their respective directories
         run: |
           for app in auth, feed, messaging, profile, projects; do
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-            git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch
+            git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch || git init gh-pages-branch
+            cd gh-pages-branch
+            git checkout gh-pages || git checkout -b gh-pages
+            cd ..
             mkdir -p gh-pages-branch/$app
-            rsync -av --delete dist/apps/$app/ gh-pages-branch/$app/
+            rsync -av --delete dist/apps/$app/ gh-pages-branch/apps/$app/
             cd gh-pages-branch
             git add .
             git commit -m "Update $app"
