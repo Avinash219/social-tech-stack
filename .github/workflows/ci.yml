@@ -35,19 +35,29 @@ jobs:
             exit 1
           fi
 
-      - name: Deploy shell to GitHub Pages root
+      - name: Clone gh-pages branch
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch || git init gh-pages-branch
+          git clone https://github.com/${{ github.repository }}.git gh-pages-branch
           cd gh-pages-branch
-          git checkout gh-pages || git checkout -b gh-pages
+          git checkout gh-pages || git checkout --orphan gh-pages
           cd ..
+
+      - name: List branches for debugging
+        run: |
+          cd gh-pages-branch
+          git branch -a
+          cd ..
+
+      - name: Deploy shell to GitHub Pages root
+        run: |
           rsync -av --delete dist/apps/shell/ gh-pages-branch/
           cd gh-pages-branch
           git add .
           git commit -m "Update Shell"
-          git push origin gh-page
+          git push origin gh-pages
+          cd ..
 
       - name: Deploy other apps to their respective directories
         run: |
