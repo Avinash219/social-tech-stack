@@ -54,6 +54,7 @@ jobs:
         run: |
           rsync -av --delete dist/apps/shell/ gh-pages-branch/
           cd gh-pages-branch
+          mkdir apps
           git add .
 
       - name: List build output
@@ -70,11 +71,10 @@ jobs:
           for app in auth, feed, messaging, profile, projects; do
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-            git clone --branch=gh-pages https://github.com/${{ github.repository }}.git gh-pages-branch || git init gh-pages-branch
             cd gh-pages-branch
             git checkout gh-pages || git checkout -b gh-pages
             cd ..
-            mkdir -p gh-pages-branch/$app
+            mkdir -p gh-pages-branch/apps/$app
             rsync -av --delete dist/apps/$app/ gh-pages-branch/apps/$app/
             cd gh-pages-branch
             git add .
