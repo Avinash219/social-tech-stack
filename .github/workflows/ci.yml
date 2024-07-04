@@ -69,8 +69,9 @@ jobs:
         run: |
           for app in projects feed; do
             if [ -d dist/apps/$app ]; then
-              mkdir -p gh-pages-branch/$app
-              rsync -av --delete dist/apps/$app/ gh-pages-branch/$app/
+              echo "Deploying $app..."
+              mkdir -p gh-pages-branch/apps/$app
+              rsync -av --delete dist/apps/$app/ gh-pages-branch/apps/$app/
               cd gh-pages-branch
               git add .
               git commit -m "Update $app"
