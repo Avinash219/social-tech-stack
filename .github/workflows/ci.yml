@@ -75,7 +75,7 @@ jobs:
               cd gh-pages-branch
               git add .
               git commit -m "Update $app"
-              git pull origin gh-pages || true
+              git pull origin gh-pages --rebase || true
               cd ..
             else
               echo "Directory dist/apps/$app does not exist. Skipping $app deployment."
