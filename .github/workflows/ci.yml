@@ -68,18 +68,22 @@ jobs:
 
       - name: Deploy other apps to their respective directories
         run: |
-          for app in feed, messaging, profile, projects; do
-            git config --global user.name 'github-actions[bot]'
-            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-            cd gh-pages-branch
-            git checkout gh-pages || git checkout -b gh-pages
-            cd ..
-            mkdir -p gh-pages-branch/apps/$app
-            rsync -av --delete dist/apps/$app/ gh-pages-branch/apps/$app/
-            cd gh-pages-branch
-            git add .
-            git commit -m "Update $app"
-            git push origin gh-pages || (git pull origin gh-pages --rebase && git push origin gh-pages)
-            cd ..
-            rm -rf gh-pages-branch
+          for app in auth feed; do
+            if [ -d dist/apps/$app ]; then
+              mkdir -p gh-pages-branch/$app
+              rsync -av --delete dist/apps/$app/ gh-pages-branch/$app/
+              cd gh-pages-branch
+              git add .
+              git commit -m "Update $app"
+              git pull origin gh-pages || true
+              cd ..
+            else
+              echo "Directory dist/apps/$app does not exist. Skipping $app deployment."
+            fi
           done
+
+      - name: Push other apps to GitHub Pages
+        run: |
+          cd gh-pages-branch
+          git push origin gh-pages
+          cd ..
