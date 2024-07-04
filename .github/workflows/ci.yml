@@ -23,8 +23,14 @@ jobs:
       - name: Build all apps
         run: npx nx run-many --target=build --all --prod
 
-      - name: List build output
-        run: ls -R dist
+      - name: List build outputs
+        run: |
+          echo "Listing build outputs:"
+          ls -R dist/apps/shell || echo "Shell build output does NOT exist."
+          ls -R dist/apps/feed || echo "Feed build output does NOT exist."
+          ls -R dist/apps/messaging || echo "Messaging build output does NOT exist."
+          ls -R dist/apps/profile || echo "Profile build output does NOT exist."
+          ls -R dist/apps/projects || echo "Projects build output does NOT exist."
 
       - name: Verify shell output
         run: |
