@@ -68,7 +68,7 @@ jobs:
 
       - name: Deploy other apps to their respective directories
         run: |
-          for app in auth, feed, messaging, profile, projects; do
+          for app in feed, messaging, profile, projects; do
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
             cd gh-pages-branch
