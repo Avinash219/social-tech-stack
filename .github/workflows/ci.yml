@@ -77,7 +77,7 @@ jobs:
             if [ -d dist/apps/$app ]; then
               echo "Deploying $app..."
               mkdir -p gh-pages-branch/apps/$app
-              rsync -av --delete dist/apps/$app/ gh-pages-branch/apps/$app/
+              rsync -av --delete dist/apps/$app/ gh-pages-branch/$app/
               cd gh-pages-branch
               git add .
               git commit -m "Update $app"
