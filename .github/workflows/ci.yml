@@ -54,7 +54,6 @@ jobs:
         run: |
           rsync -av --delete dist/apps/shell/ gh-pages-branch/
           cd gh-pages-branch
-          mkdir apps
           git add .
 
       - name: List build output
@@ -68,7 +67,7 @@ jobs:
 
       - name: Deploy other apps to their respective directories
         run: |
-          for app in auth feed; do
+          for app in projects feed; do
             if [ -d dist/apps/$app ]; then
               mkdir -p gh-pages-branch/$app
               rsync -av --delete dist/apps/$app/ gh-pages-branch/$app/
@@ -85,5 +84,5 @@ jobs:
       - name: Push other apps to GitHub Pages
         run: |
           cd gh-pages-branch
-          git push origin gh-pages
+          git push -u origin gh-pages || true
           cd ..
