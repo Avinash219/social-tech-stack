@@ -50,12 +50,6 @@ jobs:
           git checkout gh-pages || git checkout --orphan gh-pages
           cd ..
 
-      - name: List branches for debugging
-        run: |
-          cd gh-pages-branch
-          git branch -a
-          cd ..
-
       - name: Deploy shell to GitHub Pages root
         run: |
           rsync -av --delete dist/apps/shell/ gh-pages-branch/
@@ -81,3 +75,9 @@ jobs:
               echo "Directory dist/apps/$app does not exist. Skipping $app deployment."
             fi
           done
+
+      - name: Final push to GitHub Pages
+        run: |
+          cd gh-pages-branch
+          git push -u origin gh-pages || true
+          cd ..
