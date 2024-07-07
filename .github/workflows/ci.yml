@@ -81,9 +81,3 @@ jobs:
               echo "Directory dist/apps/$app does not exist. Skipping $app deployment."
             fi
           done
-
-      - name: Final push to GitHub Pages
-        run: |
-          cd gh-pages-branch
-          git push origin gh-pages
-          cd ..
