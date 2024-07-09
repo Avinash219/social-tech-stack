@@ -41,13 +41,18 @@ jobs:
             exit 1
           fi
 
-      - name: Clone gh-pages branch
+      - name: Clone repository and create gh-pages branch if necessary
         run: |
           git config --global user.name "Avinash219"
           git config --global user.email "avinash.dev21987@gmail.com"
           git clone https://github.com/${{ github.repository }}.git gh-pages-branch
           cd gh-pages-branch
-          git checkout gh-pages || git checkout -b gh-pages
+          if git show-ref --quiet refs/heads/gh-pages; then
+            git checkout gh-pages
+          else
+            git checkout --orphan gh-pages
+            git reset --hard
+          fi
           cd ..
 
       - name: List branches for debugging
@@ -62,5 +67,5 @@ jobs:
           cd gh-pages-branch
           git add .
           git commit -m "Update Shell"
-          git push -u origin gh-pages
+          git push origin gh-pages
           cd ..
