@@ -67,5 +67,5 @@ jobs:
           cd gh-pages-branch
           git add .
           git commit -m "Update Shell"
-          git push origin gh-pages
+          git push -u origin gh-pages
           cd ..
