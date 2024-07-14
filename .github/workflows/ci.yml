@@ -11,28 +11,21 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Specify the Node.js version you need
+          node-version: '20' # Use the Node.js version compatible with your project
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build all applications
-        run: npx nx run-many --target=build --all --parallel --prod
-
-      - name: Move index.html to root
-        run: |
-          mkdir -p dist/apps/shell
-          mv dist/apps/shell/<subfolder>/index.html dist/apps/shell/index.html
-          mv dist/apps/shell/<subfolder>/* dist/apps/shell/
-          rm -rf dist/apps/shell/<subfolder>  # Optionally remove the now empty subfolder
+      - name: Build shell app
+        run: npx nx run-many --target=build --all --parallel --prod # Replace 'build:shell' with the actual build command for your shell app
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/apps/shell # Path to your built shell app
+          publish_dir: ./dist/apps/shell # Replace with the path to your shell app's build output directory
