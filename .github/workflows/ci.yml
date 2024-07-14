@@ -1,71 +1,38 @@
-name: Deploy to GitHub Pages
+name: Deploy NX Microapp to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main # Change this to your default branch if it's not 'main'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '20' # Specify the Node.js version you need
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build all apps
-        run: npx nx run-many --target=build --all --prod
+      - name: Build all applications
+        run: npx nx run-many --target=build --all --parallel --prod
 
-      - name: List build outputs
+      - name: Move index.html to root
         run: |
-          echo "Listing build outputs:"
-          ls -R dist/apps/shell || echo "Shell build output does NOT exist."
-          ls -R dist/apps/feed || echo "Feed build output does NOT exist."
-          ls -R dist/apps/messaging || echo "Messaging build output does NOT exist."
-          ls -R dist/apps/profile || echo "Profile build output does NOT exist."
-          ls -R dist/apps/projects || echo "Projects build output does NOT exist."
+          mkdir -p dist/apps/shell
+          mv dist/apps/shell/<subfolder>/index.html dist/apps/shell/index.html
+          mv dist/apps/shell/<subfolder>/* dist/apps/shell/
+          rm -rf dist/apps/shell/<subfolder>  # Optionally remove the now empty subfolder
 
-      - name: Verify shell output
-        run: |
-          if [ -d "dist/apps/shell" ]; then
-            echo "Shell build output exists."
-          else
-            echo "Shell build output does NOT exist."
-            exit 1
-          fi
-
-      - name: Clone repository and create gh-pages branch if necessary
-        run: |
-          git config --global user.name "Avinash219"
-          git config --global user.email "avinash.dev21987@gmail.com"
-          git clone https://github.com/${{ github.repository }}.git gh-pages-branch
-          cd gh-pages-branch
-          if git show-ref --quiet refs/heads/gh-pages; then
-            git checkout gh-pages
-          else
-            git checkout --orphan gh-pages
-            git reset --hard
-          fi
-          cd ..
-
-      - name: List branches for debugging
-        run: |
-          cd gh-pages-branch
-          git branch -a
-          cd ..
-
-      - name: Deploy shell to GitHub Pages root
-        run: |
-          rsync -av --delete dist/apps/shell/ gh-pages-branch/
-          cd gh-pages-branch
-          git add .
-          git commit -m "Update Shell"
-          git push -u origin gh-pages
-          cd ..
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/apps/shell # Path to your built shell app
