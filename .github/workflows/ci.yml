@@ -28,4 +28,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/apps/shell # Replace with the path to your shell app's build output directory
+          publish_dir: ./dist/apps/ # Replace with the path to your shell app's build output directory
