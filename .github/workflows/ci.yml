@@ -32,10 +32,10 @@ jobs:
 
       - name: Copy other apps to root
         run: |
-          cp -r ./dist/apps/feed ./dist/root/feed
-          cp -r ./dist/apps/messaging ./dist/root/messaging
-          cp -r ./dist/apps/profile ./dist/root/profile
-          cp -r ./dist/apps/projects ./dist/root/projects
+          cp -r ./dist/apps/feed ./dist/root/apps/feed
+          cp -r ./dist/apps/messaging ./dist/root/apps/messaging
+          cp -r ./dist/apps/profile ./dist/root/apps/profile
+          cp -r ./dist/apps/projects ./dist/root/apps/projects
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
