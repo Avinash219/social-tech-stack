@@ -26,6 +26,8 @@ jobs:
 
       - name: Create root deployment directory
         run: mkdir -p ./dist/root
+
+      - name: Create apps deployment directory
         run: mkdir -p ./dist/root/apps
 
       - name: Copy shell app to root
