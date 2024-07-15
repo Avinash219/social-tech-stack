@@ -24,8 +24,21 @@ jobs:
       - name: Build shell app
         run: npx nx run-many --target=build --all --parallel --prod # Replace 'build:shell' with the actual build command for your shell app
 
+      - name: Create root deployment directory
+        run: mkdir -p ./dist/root
+
+      - name: Copy shell app to root
+        run: cp -r ./dist/apps/shell/* ./dist/root/
+
+      - name: Copy other apps to root
+        run: |
+          cp -r ./dist/apps/feed ./dist/root/feed
+          cp -r ./dist/apps/messaging ./dist/root/messaging
+          cp -r ./dist/apps/profile ./dist/root/profile
+          cp -r ./dist/apps/projects ./dist/root/projects
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/apps/ # Replace with the path to your shell app's build output directory
+          publish_dir: ./dist/root # Replace with the path to your shell app's build output directory
