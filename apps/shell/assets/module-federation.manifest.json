@@ -2,7 +2,7 @@
   "remotes": {
     "auth": "http://localhost:4201",
     "profile": "http://localhost:4202",
-    "feed": "feed@https://avinash219.github.io/social-tech-stack/apps/feed/remoteEntry.js",
+    "feed": "https://avinash219.github.io/social-tech-stack/apps/feed",
     "messaging": "http://localhost:4204",
     "projects": "http://localhost:4205"
   }
