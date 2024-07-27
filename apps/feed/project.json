@@ -10,7 +10,7 @@
       "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "baseHref": "/social-tech-stack/",
+        "baseHref": "/social-tech-stack/apps/shell/feed/",
         "outputPath": "dist/apps/feed",
         "index": "apps/feed/src/index.html",
         "main": "apps/feed/src/main.ts",
