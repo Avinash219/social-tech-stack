@@ -10,6 +10,7 @@
       "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "baseHref": "/social-tech-stack/apps/projects/",
         "outputPath": "dist/apps/projects",
         "index": "apps/projects/src/index.html",
         "main": "apps/projects/src/main.ts",
