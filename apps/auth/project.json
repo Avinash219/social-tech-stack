@@ -61,7 +61,8 @@
     "serve": {
       "executor": "@nx/angular:dev-server",
       "options": {
-        "publicHost": "https://avinash219.github.io/social-tech-stack/auth"
+         "port": 4201,
+         "publicHost": "http://localhost:4201"
       },
       "configurations": {
         "production": {
@@ -94,6 +95,7 @@
       "defaultConfiguration": "production",
       "options": {
         "buildTarget": "auth:build",
+        "port": 4201,
         "watch": false
       },
       "configurations": {

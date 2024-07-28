@@ -1,0 +1,9 @@
+{
+  "remotes": {
+    "auth": "http://localhost:4201",
+    "profile": "http://localhost:4202",
+    "feed": "http://localhost:4203",
+    "messaging": "http://localhost:4204",
+    "projects": "http://localhost:4205"
+  }
+}

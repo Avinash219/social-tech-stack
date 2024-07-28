@@ -32,6 +32,18 @@
       },
       "configurations": {
         "production": {
+          "assets": [
+            "apps/shell/src/assets",
+            {
+              "glob": "**/*",
+              "input": "apps/shell/public"
+            },
+            {
+              "input": "apps/shell/src/assets/prod/",
+              "output": "assets",
+              "glob": "module-federation.manifest.json"
+            }
+          ],
           "budgets": [
             {
               "type": "initial",
@@ -50,6 +62,18 @@
           }
         },
         "development": {
+          "assets": [
+            "apps/shell/src/assets",
+            {
+              "glob": "**/*",
+              "input": "apps/shell/public"
+            },
+            {
+              "input": "apps/shell/src/assets/dev/",
+              "output": "assets",
+              "glob": "module-federation.manifest.json"
+            }
+          ],
           "buildOptimizer": false,
           "optimization": false,
           "vendorChunk": true,
