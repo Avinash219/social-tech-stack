@@ -22,7 +22,7 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build shell app
-        run: npx nx run-many --configuration=production --target=build --all --maxParallel=7 # Replace 'build:shell' with the actual build command for your shell app
+        run: npx nx affected -t build --configuration=production --base=main~1  --head=main --maxParallel=7 # Replace 'build:shell' with the actual build command for your shell app
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
