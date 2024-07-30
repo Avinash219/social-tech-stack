@@ -36,7 +36,7 @@ jobs:
         run: git checkout main
 
       - name: Build shell app
-        run: npx nx affected -t build --configuration=production --base=main~1 --head=main --maxParallel=7
+        run: npx nx run-many -t build --configuration=production --maxParallel=7
 
       - name: List build output
         run: ls -R dist
