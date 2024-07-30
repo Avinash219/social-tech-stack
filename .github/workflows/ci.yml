@@ -38,6 +38,9 @@ jobs:
       - name: Build shell app
         run: npx nx affected -t build --configuration=production --base=main~1 --head=main --maxParallel=7
 
+      - name: List build output
+        run: ls -R dist
+
       - name: Prepare for deployment
         run: |
           mkdir -p dist
