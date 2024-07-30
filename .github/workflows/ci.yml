@@ -27,7 +27,7 @@ jobs:
         run: git fetch origin gh-pages:gh-pages
 
       - name: Checkout gh-pages
-        run: git checkout gh-pages
+        run: git checkout -f gh-pages
 
       - name: Copy previous builds
         run: cp -r . ../gh-pages-backup
