@@ -41,12 +41,6 @@ jobs:
       - name: List build output
         run: ls -R dist
 
-      - name: Prepare for deployment
-        run: |
-          mkdir -p dist
-          cp -r ../gh-pages-backup/* ./dist || true
-          cp -r dist/apps/* ./dist
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
