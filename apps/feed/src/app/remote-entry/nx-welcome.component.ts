@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: ` Test Feed for affected apps updated andverified and update and
-  test`,
+  test update`,
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
