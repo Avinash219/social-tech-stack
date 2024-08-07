@@ -1,11 +1,11 @@
 /******/ var __webpack_modules__ = ({
 
-/***/ 1250:
+/***/ 1351:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 var moduleMap = {
 	"./Routes": () => {
-		return Promise.all([__webpack_require__.e(723), __webpack_require__.e(45), __webpack_require__.e(76)]).then(() => (() => ((__webpack_require__(6880)))));
+		return Promise.all([__webpack_require__.e(866), __webpack_require__.e(723), __webpack_require__.e(45), __webpack_require__.e(485), __webpack_require__.e(76)]).then(() => (() => ((__webpack_require__(3695)))));
 	}
 };
 var get = (module, getScope) => {
@@ -100,7 +100,7 @@ __webpack_require__.d(exports, {
 /******/ 	// This function allow to reference async chunks
 /******/ 	__webpack_require__.u = (chunkId) => {
 /******/ 		// return url for filenames based on template
-/******/ 		return "" + (chunkId === 76 ? "common" : chunkId) + "." + {"14":"093fd8953a7e8db4","45":"aa34f274a7b79779","76":"85cb4f8d8fefe41d","177":"72ff79e5093c64aa","345":"eb2a28bce0d328c7","406":"75b043fb4f4661c7","488":"8dd77598ea7ac92e","546":"5dc0d0254b65aeec","585":"1b405ee56b29ba7a","626":"f6c06aec47f22f97","705":"5421fcd2876956f8","723":"6a650642264dbd3f"}[chunkId] + ".js";
+/******/ 		return "" + (chunkId === 76 ? "common" : chunkId) + "." + {"14":"456c02e313ee7a05","37":"0c74a859cae11623","45":"647a8f6a352c0a92","76":"6f285071be8919e3","87":"6461534f7b100f1f","177":"6f07c139e93c510f","310":"69716e2f43e15737","345":"ae96f32f75743702","485":"f455baf5ca682261","488":"e2da40b0f7ec22ee","546":"741ebc216856e0ff","626":"0bb07d100e12b584","656":"6c4f274f50886e20","705":"41fc2f5c8c23f6d0","723":"048a7d62519df453","778":"c4eb6c903ae3b20b","866":"39881a820890e3e9","901":"f63a12c91f44593a"}[chunkId] + ".js";
 /******/ 	};
 /******/ })();
 /******/ 
@@ -121,7 +121,7 @@ __webpack_require__.d(exports, {
 /******/ /* webpack/runtime/load script */
 /******/ (() => {
 /******/ 	var inProgress = {};
-/******/ 	var dataWebpackPrefix = "feed:";
+/******/ 	var dataWebpackPrefix = "profile:";
 /******/ 	// loadScript function to load a script via script tag
 /******/ 	__webpack_require__.l = (url, done, key, chunkId) => {
 /******/ 		if(inProgress[url]) { inProgress[url].push(done); return; }
@@ -196,7 +196,7 @@ __webpack_require__.d(exports, {
 /******/ 		var warn = (msg) => {
 /******/ 			if (typeof console !== "undefined" && console.warn) console.warn(msg);
 /******/ 		};
-/******/ 		var uniqueName = "feed";
+/******/ 		var uniqueName = "profile";
 /******/ 		var register = (name, version, factory, eager) => {
 /******/ 			var versions = scope[name] = scope[name] || {};
 /******/ 			var activeVersion = versions[version];
@@ -216,13 +216,17 @@ __webpack_require__.d(exports, {
 /******/ 		var promises = [];
 /******/ 		switch(name) {
 /******/ 			case "default": {
-/******/ 				register("@angular/common/http", "18.0.2", () => (Promise.all([__webpack_require__.e(723), __webpack_require__.e(45), __webpack_require__.e(585), __webpack_require__.e(626)]).then(() => (() => (__webpack_require__(1626))))));
+/******/ 				register("@angular/common/http", "18.0.2", () => (Promise.all([__webpack_require__.e(866), __webpack_require__.e(778), __webpack_require__.e(723), __webpack_require__.e(45), __webpack_require__.e(626)]).then(() => (() => (__webpack_require__(1626))))));
 /******/ 				register("@angular/common", "18.0.2", () => (Promise.all([__webpack_require__.e(723), __webpack_require__.e(177)]).then(() => (() => (__webpack_require__(177))))));
 /******/ 				register("@angular/core/primitives/event-dispatch", "18.0.2", () => (__webpack_require__.e(546).then(() => (() => (__webpack_require__(7546))))));
 /******/ 				register("@angular/core/primitives/signals", "18.0.2", () => (__webpack_require__.e(488).then(() => (() => (__webpack_require__(3488))))));
-/******/ 				register("@angular/core", "18.0.2", () => (__webpack_require__.e(705).then(() => (() => (__webpack_require__(7705))))));
+/******/ 				register("@angular/core/rxjs-interop", "18.0.2", () => (Promise.all([__webpack_require__.e(866), __webpack_require__.e(778), __webpack_require__.e(723), __webpack_require__.e(76)]).then(() => (() => (__webpack_require__(9079))))));
+/******/ 				register("@angular/core", "18.0.2", () => (Promise.all([__webpack_require__.e(866), __webpack_require__.e(778), __webpack_require__.e(705)]).then(() => (() => (__webpack_require__(7705))))));
 /******/ 				register("@angular/platform-browser", "18.0.2", () => (Promise.all([__webpack_require__.e(723), __webpack_require__.e(45), __webpack_require__.e(345)]).then(() => (() => (__webpack_require__(345))))));
-/******/ 				register("@angular/router", "18.0.2", () => (Promise.all([__webpack_require__.e(723), __webpack_require__.e(45), __webpack_require__.e(585), __webpack_require__.e(406), __webpack_require__.e(14)]).then(() => (() => (__webpack_require__(6406))))));
+/******/ 				register("@angular/router", "18.0.2", () => (Promise.all([__webpack_require__.e(866), __webpack_require__.e(778), __webpack_require__.e(723), __webpack_require__.e(45), __webpack_require__.e(901), __webpack_require__.e(14)]).then(() => (() => (__webpack_require__(7901))))));
+/******/ 				register("@ngrx/store", "17.2.0", () => (Promise.all([__webpack_require__.e(866), __webpack_require__.e(778), __webpack_require__.e(723), __webpack_require__.e(310)]).then(() => (() => (__webpack_require__(9310))))));
+/******/ 				register("rxjs/operators", "7.8.1", () => (Promise.all([__webpack_require__.e(656), __webpack_require__.e(37)]).then(() => (() => (__webpack_require__(7037))))));
+/******/ 				register("rxjs", "7.8.1", () => (Promise.all([__webpack_require__.e(656), __webpack_require__.e(87)]).then(() => (() => (__webpack_require__(4087))))));
 /******/ 			}
 /******/ 			break;
 /******/ 		}
@@ -402,12 +406,16 @@ __webpack_require__.d(exports, {
 /******/ 	});
 /******/ 	var installedModules = {};
 /******/ 	var moduleToHandlerMapping = {
-/******/ 		6723: () => (loadStrictSingletonVersionCheckFallback("default", "@angular/core", [2,18,0,0], () => (__webpack_require__.e(705).then(() => (() => (__webpack_require__(7705))))))),
+/******/ 		4866: () => (loadStrictSingletonVersionCheckFallback("default", "rxjs", [2,7,8,0], () => (Promise.all([__webpack_require__.e(656), __webpack_require__.e(87)]).then(() => (() => (__webpack_require__(4087))))))),
+/******/ 		6723: () => (loadStrictSingletonVersionCheckFallback("default", "@angular/core", [2,18,0,0], () => (Promise.all([__webpack_require__.e(866), __webpack_require__.e(778), __webpack_require__.e(705)]).then(() => (() => (__webpack_require__(7705))))))),
 /******/ 		7045: () => (loadStrictSingletonVersionCheckFallback("default", "@angular/common", [2,18,0,0], () => (__webpack_require__.e(177).then(() => (() => (__webpack_require__(177))))))),
+/******/ 		9866: () => (loadStrictSingletonVersionCheckFallback("default", "@ngrx/store", [1,17,2,0], () => (Promise.all([__webpack_require__.e(778), __webpack_require__.e(310)]).then(() => (() => (__webpack_require__(9310))))))),
+/******/ 		2778: () => (loadStrictSingletonVersionCheckFallback("default", "rxjs/operators", [2,7,8,0], () => (Promise.all([__webpack_require__.e(656), __webpack_require__.e(37)]).then(() => (() => (__webpack_require__(7037))))))),
 /******/ 		371: () => (loadStrictSingletonVersionCheckFallback("default", "@angular/core/primitives/signals", [2,18,0,0], () => (__webpack_require__.e(488).then(() => (() => (__webpack_require__(3488))))))),
 /******/ 		8743: () => (loadStrictSingletonVersionCheckFallback("default", "@angular/core/primitives/event-dispatch", [2,18,0,0], () => (__webpack_require__.e(546).then(() => (() => (__webpack_require__(7546))))))),
-/******/ 		7275: () => (loadStrictSingletonVersionCheckFallback("default", "@angular/common/http", [2,18,0,0], () => (Promise.all([__webpack_require__.e(585), __webpack_require__.e(626)]).then(() => (() => (__webpack_require__(1626))))))),
-/******/ 		4014: () => (loadStrictSingletonVersionCheckFallback("default", "@angular/platform-browser", [2,18,0,0], () => (__webpack_require__.e(345).then(() => (() => (__webpack_require__(345)))))))
+/******/ 		7275: () => (loadStrictSingletonVersionCheckFallback("default", "@angular/common/http", [2,18,0,0], () => (Promise.all([__webpack_require__.e(866), __webpack_require__.e(778), __webpack_require__.e(626)]).then(() => (() => (__webpack_require__(1626))))))),
+/******/ 		4014: () => (loadStrictSingletonVersionCheckFallback("default", "@angular/platform-browser", [2,18,0,0], () => (__webpack_require__.e(345).then(() => (() => (__webpack_require__(345))))))),
+/******/ 		6167: () => (loadStrictSingletonVersionCheckFallback("default", "@angular/core/rxjs-interop", [2,18,0,0], () => (__webpack_require__.e(76).then(() => (() => (__webpack_require__(9079)))))))
 /******/ 	};
 /******/ 	// no consumes in initial chunks
 /******/ 	var chunkMapping = {
@@ -417,8 +425,14 @@ __webpack_require__.d(exports, {
 /******/ 		"45": [
 /******/ 			7045
 /******/ 		],
+/******/ 		"310": [
+/******/ 			6167
+/******/ 		],
 /******/ 		"345": [
 /******/ 			7275
+/******/ 		],
+/******/ 		"485": [
+/******/ 			9866
 /******/ 		],
 /******/ 		"705": [
 /******/ 			371,
@@ -426,6 +440,12 @@ __webpack_require__.d(exports, {
 /******/ 		],
 /******/ 		"723": [
 /******/ 			6723
+/******/ 		],
+/******/ 		"778": [
+/******/ 			2778
+/******/ 		],
+/******/ 		"866": [
+/******/ 			4866
 /******/ 		]
 /******/ 	};
 /******/ 	var startedInstallModules = {};
@@ -469,7 +489,7 @@ __webpack_require__.d(exports, {
 /******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 	// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 	var installedChunks = {
-/******/ 		495: 0
+/******/ 		138: 0
 /******/ 	};
 /******/ 	
 /******/ 	__webpack_require__.f.j = (chunkId, promises) => {
@@ -481,7 +501,7 @@ __webpack_require__.d(exports, {
 /******/ 				if(installedChunkData) {
 /******/ 					promises.push(installedChunkData[2]);
 /******/ 				} else {
-/******/ 					if(!/^(14|45|723)$/.test(chunkId)) {
+/******/ 					if(!/^(14|45|485|723|778|866)$/.test(chunkId)) {
 /******/ 						// setup Promise in chunk cache
 /******/ 						var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
 /******/ 						promises.push(installedChunkData[2] = promise);
@@ -546,7 +566,7 @@ __webpack_require__.d(exports, {
 /******/ 	
 /******/ 	}
 /******/ 	
-/******/ 	var chunkLoadingGlobal = self["webpackChunkfeed"] = self["webpackChunkfeed"] || [];
+/******/ 	var chunkLoadingGlobal = self["webpackChunkprofile"] = self["webpackChunkprofile"] || [];
 /******/ 	chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 	chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ })();
@@ -556,7 +576,7 @@ __webpack_require__.d(exports, {
 /******/ // module cache are used so entry inlining is disabled
 /******/ // startup
 /******/ // Load entry module and return exports
-/******/ var __webpack_exports__ = __webpack_require__(1250);
+/******/ var __webpack_exports__ = __webpack_require__(1351);
 /******/ var __webpack_exports__get = __webpack_exports__.get;
 /******/ var __webpack_exports__init = __webpack_exports__.init;
 /******/ export { __webpack_exports__get as get, __webpack_exports__init as init };

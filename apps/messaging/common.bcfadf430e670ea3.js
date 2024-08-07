@@ -1,0 +1,1 @@
+(self.webpackChunkmessaging=self.webpackChunkmessaging||[]).push([[76],{5738:(t,e,n)=>{n.r(e),n.d(e,{remoteRoutes:()=>o});const o=[{path:"",component:n(7253).a}]}}]);

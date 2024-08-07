@@ -1,11 +1,11 @@
 /******/ var __webpack_modules__ = ({
 
-/***/ 1250:
+/***/ 9608:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 var moduleMap = {
 	"./Routes": () => {
-		return Promise.all([__webpack_require__.e(723), __webpack_require__.e(45), __webpack_require__.e(76)]).then(() => (() => ((__webpack_require__(6880)))));
+		return Promise.all([__webpack_require__.e(723), __webpack_require__.e(45), __webpack_require__.e(76)]).then(() => (() => ((__webpack_require__(5894)))));
 	}
 };
 var get = (module, getScope) => {
@@ -100,7 +100,7 @@ __webpack_require__.d(exports, {
 /******/ 	// This function allow to reference async chunks
 /******/ 	__webpack_require__.u = (chunkId) => {
 /******/ 		// return url for filenames based on template
-/******/ 		return "" + (chunkId === 76 ? "common" : chunkId) + "." + {"14":"093fd8953a7e8db4","45":"aa34f274a7b79779","76":"85cb4f8d8fefe41d","177":"72ff79e5093c64aa","345":"eb2a28bce0d328c7","406":"75b043fb4f4661c7","488":"8dd77598ea7ac92e","546":"5dc0d0254b65aeec","585":"1b405ee56b29ba7a","626":"f6c06aec47f22f97","705":"5421fcd2876956f8","723":"6a650642264dbd3f"}[chunkId] + ".js";
+/******/ 		return "" + (chunkId === 76 ? "common" : chunkId) + "." + {"14":"059c1deba768e31a","45":"fa8a560549a53db7","76":"59a9f1203c8906a4","177":"ed39fa93b23c201e","345":"e6faa56055df60cb","406":"e79ea35921e25097","488":"652b25dd9badfff3","546":"fac0dc5aa258c631","585":"e083a90964ac7a22","626":"c3ade4a2fae4b17b","705":"28a508d6ec4cccc8","723":"329655b1b2234f5d"}[chunkId] + ".js";
 /******/ 	};
 /******/ })();
 /******/ 
@@ -121,7 +121,7 @@ __webpack_require__.d(exports, {
 /******/ /* webpack/runtime/load script */
 /******/ (() => {
 /******/ 	var inProgress = {};
-/******/ 	var dataWebpackPrefix = "feed:";
+/******/ 	var dataWebpackPrefix = "projects:";
 /******/ 	// loadScript function to load a script via script tag
 /******/ 	__webpack_require__.l = (url, done, key, chunkId) => {
 /******/ 		if(inProgress[url]) { inProgress[url].push(done); return; }
@@ -196,7 +196,7 @@ __webpack_require__.d(exports, {
 /******/ 		var warn = (msg) => {
 /******/ 			if (typeof console !== "undefined" && console.warn) console.warn(msg);
 /******/ 		};
-/******/ 		var uniqueName = "feed";
+/******/ 		var uniqueName = "projects";
 /******/ 		var register = (name, version, factory, eager) => {
 /******/ 			var versions = scope[name] = scope[name] || {};
 /******/ 			var activeVersion = versions[version];
@@ -469,7 +469,7 @@ __webpack_require__.d(exports, {
 /******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 	// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 	var installedChunks = {
-/******/ 		495: 0
+/******/ 		597: 0
 /******/ 	};
 /******/ 	
 /******/ 	__webpack_require__.f.j = (chunkId, promises) => {
@@ -546,7 +546,7 @@ __webpack_require__.d(exports, {
 /******/ 	
 /******/ 	}
 /******/ 	
-/******/ 	var chunkLoadingGlobal = self["webpackChunkfeed"] = self["webpackChunkfeed"] || [];
+/******/ 	var chunkLoadingGlobal = self["webpackChunkprojects"] = self["webpackChunkprojects"] || [];
 /******/ 	chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 	chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ })();
@@ -556,7 +556,7 @@ __webpack_require__.d(exports, {
 /******/ // module cache are used so entry inlining is disabled
 /******/ // startup
 /******/ // Load entry module and return exports
-/******/ var __webpack_exports__ = __webpack_require__(1250);
+/******/ var __webpack_exports__ = __webpack_require__(9608);
 /******/ var __webpack_exports__get = __webpack_exports__.get;
 /******/ var __webpack_exports__init = __webpack_exports__.init;
 /******/ export { __webpack_exports__get as get, __webpack_exports__init as init };
