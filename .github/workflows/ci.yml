@@ -51,13 +51,10 @@ jobs:
             npx nx affected -t build --configuration=production --base=main~1 --head=main --maxParallel=7
           fi
 
-      - name: Configure Git
-        run: |
-          git config --global user.email "avinash.dev21987@gmail.com"
-          git config --global user.name "Avinash219"
-
       - name: Deploy affected apps to GitHub Pages
         if: env.affected != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           for app in ${{ env.affected }}
           do
