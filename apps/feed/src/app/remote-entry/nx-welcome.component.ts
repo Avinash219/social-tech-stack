@@ -5,7 +5,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-nx-welcome',
   standalone: true,
   imports: [CommonModule],
-  template: ` Test Feed for affected apps updated andverified and update`,
+  template: ` Test Feed for affected apps updated andverified and update and
+  test`,
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
