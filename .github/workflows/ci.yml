@@ -34,12 +34,22 @@ jobs:
           if [ -z "$affected" ]; then
             echo "No affected projects found."
            else
+            echo "affected=$affected" >> $GITHUB_ENV
             echo "Affected projects: $affected"
           fi
 
       - name: Build affected apps
         run: |
-          npx nx affected -t build --configuration=production --base=main~1 --head=main --maxParallel=7
+          if [ -z "${{ env.affected }}" ]; then
+            echo "No affected projects to build."
+          else
+            npx nx affected -t build --configuration=production --base=main~1 --head=main --maxParallel=7
+          fi
       - name: Deploy affected apps to GitHub Pages
+        if: env.affected != ''
         run: |
-          npx angular-cli-ghpages --dir=dist/apps/$app
+          for app in ${{ env.affected }}
+          do
+            # Deploy each affected app to its GitHub Pages branch
+            npx angular-cli-ghpages --dir=dist/apps/$app
+          done
