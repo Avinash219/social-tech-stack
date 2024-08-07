@@ -61,8 +61,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          for app in ${{ env.affected }}
-          do
-            # Deploy each affected app to its GitHub Pages branch
-            npx angular-cli-ghpages --dir=dist/apps/$app --no-silent
-          done
+          npx angular-cli-ghpages --dir=dist --no-silent
