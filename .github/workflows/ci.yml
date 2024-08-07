@@ -30,14 +30,18 @@ jobs:
         id: affected
         run: |
           set -e
-          affected=$(npx nx show projects --affected --base=main~1 --head=main || echo "")
-          if [ -z "$affected" ]; then
-            echo "No affected projects found."
+          affected=$(npx nx show projects --affected --base=origin/main~1 --head=HEAD || echo "")
+           if [ -z "$affected" ]; then
+           echo "No affected projects found."
            else
-             affected_single_line=$(echo "$affected" | tr '\n' ' ')
-             echo "affected=$affected_single_line" >> $GITHUB_ENV
-             echo "Affected projects: $affected_single_line"
-          fi
+           affected_filtered=$(echo "$affected" | grep -v 'e2e' | tr '\n' ' ')
+           if [ -z "$affected_filtered" ]; then
+             echo "No affected projects to build."
+           else
+             echo "affected=$affected_filtered" >> $GITHUB_ENV
+               echo "Affected projects: $affected_filtered"
+             fi
+           fi
 
       - name: Build affected apps
         run: |
