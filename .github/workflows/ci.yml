@@ -1,4 +1,4 @@
-name: Deploy NX Microapp to GitHub Pages
+name: Deploy Affected Apps to GitHub Pages
 
 on:
   push:
@@ -6,11 +6,11 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -18,32 +18,33 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 20
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Fetch existing gh-pages
-        run: git fetch origin gh-pages:gh-pages
+      - name: Install Nx globally
+        run: npm install -g nx
 
-      - name: Checkout gh-pages
-        run: git checkout -f gh-pages
+      - name: Determine affected projects
+        id: affected
+        run: |
+          affected=$(npx nx print-affected --target=build --select=projects --base=origin/main~1 --head=HEAD)
+          echo "affected=$affected" >> $GITHUB_ENV
 
-      - name: Copy previous builds
-        run: cp -r . ../gh-pages-backup
+      - name: Build affected apps
+        run: |
+          if [ -z "${{ env.affected }}" ]; then
+            echo "No affected projects to build."
+          else
+            npx nx affected --target=build --base=origin/main~1 --head=HEAD --prod
+          fi
 
-      - name: Checkout main
-        run: git checkout main
-
-      - name: Build shell app
-        run: npx nx run-many -t build --configuration=production --maxParallel=7
-
-      - name: List build output
-        run: ls -R dist
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          keep_files: true
+      - name: Deploy affected apps to GitHub Pages
+        if: env.affected != ''
+        run: |
+          for app in ${{ env.affected }}
+          do
+            # Deploy each affected app to its GitHub Pages branch
+            npx angular-cli-ghpages --dir=dist/apps/$app
+          done
