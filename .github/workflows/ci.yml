@@ -30,7 +30,7 @@ jobs:
         id: affected
         run: |
           set -e
-          affected=$(npx nx print-affected --target=build --select=projects --base=origin/main~1 --head=HEAD || echo "")
+          affected=$(npx nx show projects --affected --base=origin/main~1 --head=HEAD || echo "")
           if [ -z "$affected" ]; then
             echo "No affected projects found."
            else
