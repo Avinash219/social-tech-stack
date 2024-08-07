@@ -34,8 +34,9 @@ jobs:
           if [ -z "$affected" ]; then
             echo "No affected projects found."
            else
-            echo "affected=$affected" >> $GITHUB_ENV
-            echo "Affected projects: $affected"
+             affected_single_line=$(echo "$affected" | tr '\n' ' ')
+             echo "affected=$affected_single_line" >> $GITHUB_ENV
+             echo "Affected projects: $affected_single_line"
           fi
 
       - name: Build affected apps
