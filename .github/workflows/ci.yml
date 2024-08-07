@@ -41,10 +41,5 @@ jobs:
         run: |
           npx nx affected -t build --configuration=production --base=main~1 --head=main --maxParallel=7
       - name: Deploy affected apps to GitHub Pages
-        if: env.affected != ''
         run: |
-          for app in ${{ env.affected }}
-          do
-            # Deploy each affected app to its GitHub Pages branch
-            npx angular-cli-ghpages --dir=dist/apps/$app
-          done
+          npx angular-cli-ghpages --dir=dist/apps/$app
