@@ -6,7 +6,7 @@ import { ButtonModule } from 'primeng/button';
   selector: 'app-nx-welcome',
   standalone: true,
   imports: [CommonModule, ButtonModule],
-  template: ` <p-button label="Submit" /> `,
+  template: ` Test <p-button label="Submit" /> `,
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })

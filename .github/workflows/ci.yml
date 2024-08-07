@@ -1,64 +1,31 @@
-name: Deploy Affected Apps to GitHub Pages
+name: Deploy NX Microapp to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main # Change this to your default branch if it's not 'main'
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20' # Use the Node.js version compatible with your project
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Install Nx globally
-        run: npm install -g nx
+      - name: Build shell app
+        run: npx nx run-many --configuration=production --target=build --all --maxParallel=7 # Replace 'build:shell' with the actual build command for your shell app
 
-      - name: Determine affected projects
-        id: affected
-        run: |
-          set -e
-          affected=$(npx nx show projects --affected --base=origin/main~1 --head=HEAD || echo "")
-           if [ -z "$affected" ]; then
-           echo "No affected projects found."
-           else
-           affected_filtered=$(echo "$affected" | grep -v 'e2e' | tr '\n' ' ')
-           if [ -z "$affected_filtered" ]; then
-             echo "No affected projects to build."
-           else
-             echo "affected=$affected_filtered" >> $GITHUB_ENV
-               echo "Affected projects: $affected_filtered"
-             fi
-           fi
-
-      - name: Build affected apps
-        run: |
-          if [ -z "${{ env.affected }}" ]; then
-            echo "No affected projects to build."
-          else
-            npx nx affected -t build --configuration=production --base=main~1 --head=main --maxParallel=7
-          fi
-
-      - name: Configure Git
-        run: |
-          git config --global user.email "avinash.dev21987@gmail.com"
-          git config --global user.name "Avinash219"
-
-      - name: Deploy affected apps to GitHub Pages
-        if: env.affected != ''
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          npx angular-cli-ghpages --dir=dist --no-silent
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # Replace with the path to your shell app's build output directory
