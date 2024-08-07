@@ -30,7 +30,7 @@ jobs:
         id: affected
         run: |
           set -e
-          affected=$(npx nx show projects --affected --base=origin/main~1 --head=HEAD || echo "")
+          affected=$(npx nx show projects --affected --base=main~1 --head=main || echo "")
           if [ -z "$affected" ]; then
             echo "No affected projects found."
            else
@@ -39,11 +39,7 @@ jobs:
 
       - name: Build affected apps
         run: |
-          if [ -z "${{ env.affected }}" ]; then
-            echo "No affected projects to build."
-          else
-            npx nx affected -t build --configuration=production --base=main~1 --head=main --maxParallel=7
-          fi
+          npx nx affected -t build --configuration=production --base=main~1 --head=main --maxParallel=7
       - name: Deploy affected apps to GitHub Pages
         if: env.affected != ''
         run: |
