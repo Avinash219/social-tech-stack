@@ -35,12 +35,12 @@ jobs:
            if [ -z "$affected" ]; then
            echo "No affected projects found."
            else
-           affected_apps=$(echo "$affected" | grep '^apps/' | sed 's#^apps/##' | tr '\n' ' ')
-            if [ -z "$affected_apps" ]; then
+           affected_filtered=$(echo "$affected" | grep -v 'e2e' | tr '\n' ' ')
+            if [ -z "$affected_filtered" ]; then
               echo "No affected apps to build."
             else
-              echo "affected=$affected_apps" >> $GITHUB_ENV
-              echo "Affected apps: $affected_apps"echo "Affected apps: $affected_apps"
+              echo "affected=$affected_filtered" >> $GITHUB_ENV
+              echo "Affected apps: $affected_filtered"echo "Affected apps: $affected_filtered"
             fi
            fi
 
