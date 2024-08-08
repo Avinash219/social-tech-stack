@@ -31,6 +31,7 @@ jobs:
         run: |
           set -e
           affected=$(npx nx show projects --affected --base=origin/main~1 --head=HEAD || echo "")
+          echo "Affected apps: $affected"
            if [ -z "$affected" ]; then
            echo "No affected projects found."
            else
@@ -39,7 +40,7 @@ jobs:
               echo "No affected apps to build."
             else
               echo "affected=$affected_apps" >> $GITHUB_ENV
-              echo "Affected apps: $affected_apps"
+              echo "Affected apps: $affected_apps"echo "Affected apps: $affected_apps"
             fi
            fi
 
