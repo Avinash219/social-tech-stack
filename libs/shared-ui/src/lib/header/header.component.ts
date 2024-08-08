@@ -43,6 +43,8 @@ export class HeaderComponent {
   router = inject(Router);
 
   data$: Observable<any> | undefined;
+  test: any;
+
   ngOnInit() {
     this.storeSubscription = this.store
       .select('user') // Select the 'user' slice from the store
