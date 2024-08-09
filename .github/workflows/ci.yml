@@ -68,10 +68,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          mkdir -p gh-pages/apps
           for app in ${{ env.affected }}
           do
             echo "Deploying $app"
-            rm -rf gh-pages/apps/${app}
+             if [ -d "gh-pages/apps/${app}" ]; then
+              rm -rf gh-pages/apps/${app}
+            fi
             cp -r dist/apps/${app} gh-pages/apps/${app}
           done
           cd gh-pages
