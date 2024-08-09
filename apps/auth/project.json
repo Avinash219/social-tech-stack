@@ -11,7 +11,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "baseHref": "/social-tech-stack/apps/auth/",
-        "outputPath": "dist/apps/shell//auth",
+        "outputPath": "dist/apps/auth",
         "index": "apps/auth/src/index.html",
         "main": "apps/auth/src/main.ts",
         "polyfills": ["zone.js"],
