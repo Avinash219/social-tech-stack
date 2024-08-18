@@ -4,6 +4,7 @@
     "profile": "http://localhost:4202/social-tech-stack/apps/profile",
     "feed": "http://localhost:4203/social-tech-stack/apps/feed",
     "messaging": "http://localhost:4204/social-tech-stack/apps/messaging",
-    "projects": "http://localhost:4205/social-tech-stack/apps/projects"
+    "projects": "http://localhost:4205/social-tech-stack/apps/projects",
+    "about": "http://localhost:4206/remoteEntry.js"
   }
 }

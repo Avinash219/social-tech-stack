@@ -29,6 +29,11 @@ export const appRoutes: Route[] = [
       loadRemoteModule('auth', './Routes').then((m) => m.remoteRoutes),
   },
   {
+    path: 'about',
+    loadComponent: () =>
+      loadRemoteModule('about', './Component').then((m) => m.AppComponent),
+  },
+  {
     path: '',
     component: NxWelcomeComponent,
   },
