@@ -1,5 +1,11 @@
 <span>TESTing</span>
 <lib-header></lib-header>
+<div>
+  Router
+  @if(userAddress$ | async; as address){
+  Route - {{address}}
+  }
+</div>
 <ul class="remote-menu">
   Test
   <li><a routerLink="/">Home</a></li>

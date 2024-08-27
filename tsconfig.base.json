@@ -19,6 +19,7 @@
         "libs/auth/data-access-auth/src/index.ts"
       ],
       "@client/auth/feature": ["libs/auth/feature/src/index.ts"],
+      "@client/shared-module": ["libs/shared-module/src/index.ts"],
       "@client/shared-state": ["libs/shared-state/src/index.ts"],
       "@client/shared-ui": ["libs/shared-ui/src/index.ts"],
       "auth/Routes": ["apps/auth/src/app/remote-entry/entry.routes.ts"],
