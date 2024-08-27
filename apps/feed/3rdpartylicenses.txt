@@ -242,6 +242,8 @@ Apache-2.0
  
 
 
+shared-message-bus
+
 tslib
 0BSD
 Copyright (c) Microsoft Corporation.
